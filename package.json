@@ -1,0 +1,22 @@
+{
+  "name": "memoji_game",
+  "version": "1.0.0",
+  "description": "Find all card pairs in given time",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirRedrick/memoji_game.git"
+  },
+  "keywords": [
+    "memoji"
+  ],
+  "author": "Mykyta Batrak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SirRedrick/memoji_game/issues"
+  },
+  "homepage": "https://github.com/SirRedrick/memoji_game#readme"
+}
