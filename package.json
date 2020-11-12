@@ -1,8 +1,14 @@
 {
-  "name": "memoji_game",
+  "name": "assignment",
   "version": "1.0.0",
   "description": "Find all card pairs in given time",
-  "main": "script.js",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,27 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/SirRedrick/memoji_game.git"
   },
-  "keywords": [
-    "memoji"
-  ],
   "author": "Mykyta Batrak",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SirRedrick/memoji_game/issues"
   },
-  "homepage": "https://github.com/SirRedrick/memoji_game#readme",
-  "devDependencies": {
-    "eslint": "^7.13.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-node": "^4.1.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.0.0",
-    "prettier": "^2.1.2"
-  }
+  "homepage": "https://github.com/SirRedrick/memoji_game#readme"
 }
