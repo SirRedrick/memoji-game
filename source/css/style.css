@@ -61,7 +61,7 @@ body {
   backface-visibility: hidden;
 }
 
-.front {
+.back {
   border: 5px solid #fff;
   background: linear-gradient(
     45deg,
@@ -70,7 +70,7 @@ body {
   );
 }
 
-.back {
+.front {
   background-color: #fff;
   transform: rotateY(180deg);
   display: flex;
