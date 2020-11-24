@@ -82,3 +82,11 @@ body {
 .card-rotate {
   transform: rotateY(180deg);
 }
+
+.card-right .front {
+  background-color: #5ad66f;
+}
+
+.card-wrong .front {
+  background-color: #f44336;
+}
