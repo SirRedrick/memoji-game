@@ -1,15 +1,63 @@
 class Game {
-  constructor(HTMLGameElement) {
+  constructor(HTMLGameElement, HTMLTimerElement, HTMLButtonElement) {
     this.game = HTMLGameElement;
+    this.timer = HTMLTimerElement;
+    this.button = HTMLButtonElement;
+
     this.cards = [];
+    this.initButton();
     this.initCards();
     this.flipCard();
     this.pairs = 6;
     this.firstOpened = undefined;
     this.secondOpened = undefined;
+    this.intervalId;
+    this.time = 60;
   }
 
-  initCards = () => {
+  initButton() {
+    this.button.addEventListener('click', () => {
+      this.button.parentNode.parentNode.style.display = 'none';
+      this.restart();
+    });
+  }
+
+  endgame(isWin) {
+    this.button.parentNode.parentNode.style.display = 'block';
+    if (isWin)
+      this.button.parentNode.children[0].innerHTML = `
+        <span style="animation-delay: 0.2s">W</span>
+        <span style="animation-delay: 0.4s">i</span>
+        <span style="animation-delay: 0.6s">n</span>
+    `;
+    else
+      this.button.parentNode.children[0].innerHTML = `
+      <span style="animation-delay: 0.2s">L</span>
+      <span style="animation-delay: 0.4s">o</span>
+      <span style="animation-delay: 0.6s">s</span>
+      <span style="animation-delay: 0.8s">e</span>
+  `;
+  }
+
+  restart() {
+    this.cards = [];
+    this.pairs = 6;
+    this.firstOpened = undefined;
+    this.secondOpened = undefined;
+    this.time = 60;
+    this.timer.innerHTML = '01:00';
+
+    const cards = Array.from(document.querySelectorAll('.card'));
+    cards.forEach((card) => {
+      card.children[0].classList.remove('card-rotate');
+      card.children[0].classList.remove('card-right');
+      card.children[0].classList.remove('card-wrong');
+    });
+
+    this.initCards();
+  }
+
+  initCards() {
     function getRandomArbitrary(min, max) {
       return Math.floor(Math.random() * (max - min) + min);
     }
@@ -60,6 +108,21 @@ class Game {
 
       faces.splice(faceIndex, 1);
     }
+
+    this.intervalId = setInterval(this.count, 1000);
+  }
+
+  count = () => {
+    if (this.time !== 0 && this.pairs !== 0) {
+      this.time -= 1;
+      if (this.time >= 9) this.timer.innerHTML = `00:${this.time}`;
+      else this.timer.innerHTML = `00:0${this.time}`;
+    } else if (this.time === 0 && this.pairs !== 0) {
+      console.log(this.intervalId);
+      clearInterval(this.intervalId);
+      this.endgame(false);
+      console.log('count');
+    }
   };
 
   flipCard = () => {
@@ -91,7 +154,8 @@ class Game {
             this.cards[this.secondOpened].setAsRight();
             this.pairs--;
             if (this.pairs === 0) {
-              alert('YOU WON!');
+              clearInterval(this.intervalId);
+              this.endgame(true);
             }
           } else {
             this.cards[this.firstOpened].setAsWrong();

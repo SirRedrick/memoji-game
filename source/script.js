@@ -1,3 +1,7 @@
 (function () {
-  new Game(document.querySelector('.grid'));
+  const game = new Game(
+    document.querySelector('.grid'),
+    document.querySelector('.timer'),
+    document.querySelector('.again')
+  );
 })();
